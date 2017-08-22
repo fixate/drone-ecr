@@ -12,6 +12,8 @@ export AWS_DEFAULT_REGION=${PLUGIN_REGION:-'us-east-1'}
 if [ -n "$PLUGIN_ACCESS_KEY" ] && [ -n "$PLUGIN_SECRET_KEY" ]; then
   export AWS_ACCESS_KEY_ID=${PLUGIN_ACCESS_KEY}
   export AWS_SECRET_ACCESS_KEY=${PLUGIN_SECRET_KEY}
+else
+	echo "No explicit AWS credentials given."
 fi
 
 # get token from aws
