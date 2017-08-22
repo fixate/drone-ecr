@@ -16,6 +16,8 @@ else
 	echo "No explicit AWS credentials given."
 fi
 
+
+
 # get token from aws
 aws_auth=$(aws ecr get-authorization-token --output text)
 
@@ -23,6 +25,8 @@ aws_auth=$(aws ecr get-authorization-token --output text)
 export DOCKER_USERNAME=AWS
 export DOCKER_PASSWORD=$(echo $aws_auth | cut -d ' ' -f2 | base64 -d | cut -d: -f2)
 export DOCKER_REGISTRY=$(echo $aws_auth | cut -d ' ' -f4)
+
+/usr/bin/env
 
 # invoke the docker plugin
 /bin/drone-docker "$@"
